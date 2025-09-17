@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل عميل جديد</title>
+  <style>
+    body {
+      font-family: Tahoma, Arial;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background: #25d366;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #20b358;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>📋 تسجيل عميل</h2>
+    <input type="text" id="name" placeholder="الاسم">
+    <input type="text" id="phone" placeholder="رقم الهاتف">
+    <textarea id="address" placeholder="العنوان"></textarea>
+    <button onclick="sendToWhatsApp()">إرسال للواتساب</button>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let address = document.getElementById("address").value;
+
+      let message = `📝 تسجيل جديد:%0Aالاسم: ${name}%0A📱 رقم: ${phone}%0A🏠 العنوان: ${address}`;
+      let adminNumber = "201142044652"; // رقم الأدمن مع كود الدولة
+
+      window.open(`https://wa.me/${adminNumber}?text=${message}`, "_blank");
+    }
+  </script>
+</body>
+</html>
