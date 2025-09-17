@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>إرسال الفاتورة بالإيميل</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // حط المفتاح العام من EmailJS
+    })();
+  </script>
+</head>
+<body>
+  <h2>📋 تسجيل عميل جديد</h2>
+  <form id="invoice-form">
+    <input type="text" id="name" placeholder="اسم العميل"><br><br>
+    <input type="email" id="email" placeholder="إيميل العميل"><br><br>
+    <input type="text" id="location" placeholder="عنوان العميل"><br><br>
+    <textarea id="invoice" placeholder="تفاصيل الفاتورة"></textarea><br><br>
+    <button type="submit">إرسال الفاتورة</button>
+  </form>
+
+  <script>
+    document.getElementById("invoice-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let params = {
+        client_name: document.getElementById("name").value,
+        client_email: document.getElementById("email").value,
+        client_location: document.getElementById("location").value,
+        client_invoice: document.getElementById("invoice").value
+      };
+
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+        .then(function(response) {
+          alert("✅ تم إرسال الفاتورة بنجاح!");
+        }, function(error) {
+          alert("❌ حصل خطأ، حاول تاني.");
+          console.log(error);
+        });
+    });
+  </script>
+</body>
+</html>
