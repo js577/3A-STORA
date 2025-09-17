@@ -1,0 +1,60 @@
+:root{
+  --primary:#2a9d8f;
+  --dark:#264653;
+  --accent:#e76f51;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: 'Cairo', sans-serif;
+  background:#fafafa;
+  color:#222;
+  direction:rtl;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+  background:var(--primary);
+  color:#fff;
+}
+
+.brand h1{margin:0;font-size:18px}
+.controls{display:flex;gap:8px;align-items:center}
+.controls input{padding:6px 8px;border-radius:6px;border:0}
+.controls button{padding:6px 8px;border-radius:6px;border:0;background:var(--dark);color:#fff;cursor:pointer}
+
+main{display:flex;gap:16px;padding:16px}
+.sidebar{width:200px;background:#fff;padding:12px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+.sidebar h3{margin-top:0}
+.sidebar ul{list-style:none;padding:0; margin:0; display:flex;flex-direction:column; gap:6px}
+.sidebar li{cursor:pointer;padding:8px;border-radius:6px}
+.sidebar li:hover{background:#f0f0f0}
+
+.content{flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.card{background:#fff;padding:12px;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,0.05);display:flex;flex-direction:column;gap:8px}
+.card h4{margin:0;font-size:16px}
+.card .price{font-weight:bold}
+.card button{margin-top:auto;padding:8px;border:0;border-radius:6px;background:var(--accent);color:#fff;cursor:pointer}
+
+footer{padding:12px;text-align:center;margin-top:20px;color:#666}
+
+/* Modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;padding:20px;z-index:50}
+.modal-content{background:#fff;padding:16px;border-radius:8px;min-width:300px;max-width:860px;position:relative}
+.modal-content.large{max-height:80vh;overflow:auto}
+.modal .close{position:absolute;left:10px;top:8px;font-size:24px;cursor:pointer}
+
+.cart-summary{margin-top:12px}
+#cartItems{max-height:300px;overflow:auto}
+
+/* invoice print style */
+@media print{
+  body *{visibility:hidden}
+  #invoiceContent, #invoiceContent *{visibility:visible}
+  #invoiceContent{position:fixed;left:0;top:0;width:100%}
+               }
