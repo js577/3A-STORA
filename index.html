@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3A للتجارة المواد الغذائية</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>🌿 3A للتجارة المواد الغذائية</h1>
+    </div>
+    <div class="controls">
+      <input id="searchInput" placeholder="ابحث عن منتج..." />
+      <button id="searchBtn">بحث</button>
+      <button id="cartBtn">🛒 السلة (<span id="cartCount">0</span>)</button>
+      <button id="loginBtn">تسجيل / حسابي</button>
+      <button id="adminBtn">لوحة التحكم</button>
+    </div>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <h3>الأقسام</h3>
+      <ul id="categoryList"></ul>
+    </aside>
+
+    <section class="content">
+      <div id="productList" class="grid"></div>
+    </section>
+  </main>
+
+  <!-- سلة ومنفذ الطلب -->
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-target="cartModal">&times;</span>
+      <h2>سلة المشتريات</h2>
+      <div id="cartItems"></div>
+      <div class="cart-summary">
+        <p>الإجمالي: <span id="cartTotal">0</span> جنيه</p>
+        <label>طريقة الدفع:
+          <select id="paymentMethod">
+            <option value="cod">الدفع عند الاستلام</option>
+            <option value="bank">تحويل بنكي</option>
+          </select>
+        </label>
+        <button id="checkoutBtn">إتمام الطلب و طباعة الفاتورة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- تسجيل / حساب -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-target="loginModal">&times;</span>
+      <h2>بيانات العميل</h2>
+      <input id="custName" placeholder="الاسم" />
+      <input id="custPhone" placeholder="رقم الموبايل" />
+      <button id="getLocationBtn">تحديد الموقع (GPS)</button>
+      <p id="custLocation">الموقع: غير محدد</p>
+      <button id="saveCustomerBtn">حفظ</button>
+    </div>
+  </div>
+
+  <!-- لوحة تحكم بسيطة -->
+  <div id="adminModal" class="modal">
+    <div class="modal-content large">
+      <span class="close" data-target="adminModal">&times;</span>
+      <h2>لوحة التحكم (Admin)</h2>
+      <p>كلمة المرور الافتراضية: <strong>3Aadmin</strong></p>
+      <input id="adminPass" type="password" placeholder="ادخل كلمة المرور" />
+      <button id="adminLoginBtn">دخول</button>
+
+      <div id="adminArea" style="display:none;">
+        <h3>تحكم في المنتجات</h3>
+        <div id="adminProducts"></div>
+        <h4>إضافة منتج جديد</h4>
+        <select id="newCategory"></select>
+        <input id="newName" placeholder="اسم المنتج" />
+        <input id="newPrice" placeholder="السعر (جنيه)" type="number"/>
+        <button id="addProductBtn">أضف منتج</button>
+
+        <hr/>
+        <button id="resetStorageBtn">إعادة تحميل المنتجات من JSON (ستفقد التعديلات المحلية)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- صفحة الفاتورة للطباعة -->
+  <div id="invoicePage" style="display:none;">
+    <div id="invoiceContent">
+      <!-- سيتم تعبئتها ديناميكيًا -->
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 3A للتجارة المواد الغذائية</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
